@@ -1,10 +1,13 @@
-
-    model {
-        # data likelihood
-        X ~ dbin(p,n)
-        # a beta prior for p
-        p ~ dbeta(alpha, beta);
-        # Predicted data , given p
-        y ~ dbin(p, n_next);
+model {
+    # data likelihood
+    for(i in 1:n){
+        X[i] ~ dbern(p);
     }
+    
+    # a beta prior for p
+    p ~ dbeta(alpha, beta)
+
+    # Predicted data , given p
+    y ~ dbin(p, n_next);
+}
 

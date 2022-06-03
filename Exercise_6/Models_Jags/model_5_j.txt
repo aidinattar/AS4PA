@@ -5,7 +5,7 @@
             X[i] ~ dpois(lambda);
         }
         # uniform prior for lambda
-        lambda ~ dunif(min.prior, max.prior)
+        lambda ~ dbeta(1/2, 1/2)
 
         # Predicted data , given p
         y ~ dpois(lambda);
